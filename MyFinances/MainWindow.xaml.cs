@@ -17,5 +17,21 @@ namespace MyFinances {
         public MainWindow() {
             InitializeComponent();
         }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+        }
+
+        private void Frame_Navigated(object sender, NavigationEventArgs e) {
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e) {
+
+        }
     }
 }
