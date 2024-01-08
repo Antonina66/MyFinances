@@ -10,23 +10,25 @@ namespace MyFinances.Logic {
 
         private Dictionary<int, TransactionCategoryModel> _transactionCategories;
         private Dictionary<int, AccountsFinanseModel> _accountsFinanses;
-        private Dictionary<int, ExpenseFinanseModel> _expenseFinanses;
+        private Dictionary<int, ExpensesFinanseModel> _expensesFinanses;
 
         private int _transactionCategoryLastId;
         private int _accountsFinansesLastId;
+        private int _expensesFinansesLastId;
 
         public DataStorage() {
 
             _transactionCategories = new Dictionary<int, TransactionCategoryModel>();
             _accountsFinanses = new Dictionary<int, AccountsFinanseModel>();
-            _expenseFinanses = new Dictionary<int, ExpenseFinanseModel>();
+            _expensesFinanses = new Dictionary<int, ExpensesFinanseModel>();
 
             _transactionCategoryLastId = 1;
             _accountsFinansesLastId = 1;
+            _expensesFinansesLastId = 1;
         }
 
 
-        //Category
+        //Category Transaction (Категории транзакций)
         public void AddCategory(TransactionCategoryModel category) {
 
             category.Id = _transactionCategoryLastId;
@@ -52,7 +54,8 @@ namespace MyFinances.Logic {
             return _transactionCategories.Values.ToList();
         }
 
-        //AccountFinanse
+
+        //Account Finanse (Финансовые счета)
         public void AddAccount(AccountsFinanseModel account) {
 
             account.Id = _accountsFinansesLastId;
@@ -60,6 +63,46 @@ namespace MyFinances.Logic {
             _accountsFinanses.Add(account.Id, account);
             _accountsFinansesLastId++;
 
+        }
+
+        public void DatachAccountById(int id) {
+
+            _accountsFinanses.Remove(id);
+        }
+
+        public AccountsFinanseModel GetAccountsFinanseModelById(int id) {
+
+            return _accountsFinanses[id];
+        }
+
+        public List<AccountsFinanseModel> GetAllAccountsFinanse() {
+
+            return _accountsFinanses.Values.ToList();
+        }
+
+
+        //Expense Finanses (Траты)
+        public void AddExpenses(ExpensesFinanseModel expenses) {
+
+            expenses.Id = _expensesFinansesLastId;
+
+            _expensesFinanses.Add(expenses.Id, expenses);
+            _expensesFinansesLastId++;
+        }
+
+        public void DatachExpensesById(int id) {
+
+            _expensesFinanses.Remove(id);
+        }
+
+        public ExpensesFinanseModel GetExpensesFinanseModelById(int id) {
+
+            return _expensesFinanses[id];
+        }
+
+        public List<ExpensesFinanseModel> GetAllExpensesFinanses() {
+
+            return _expensesFinanses.Values.ToList();
         }
 
     }
