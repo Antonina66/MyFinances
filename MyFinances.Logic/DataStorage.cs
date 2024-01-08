@@ -6,21 +6,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MyFinances.Logic {
-   public class DataStorage {
+    public class DataStorage {
 
         private Dictionary<int, TransactionCategoryModel> _transactionCategories;
         private Dictionary<int, AccountsFinanseModel> _accountsFinanses;
-        private Dictionary<int, ExpenseFinanseModel > _expenseFinanses;
+        private Dictionary<int, ExpenseFinanseModel> _expenseFinanses;
 
-        private int _transactionCategoryLastId =1;
-
-        private int _accountsFinansesLastId = 1;
+        private int _transactionCategoryLastId;
+        private int _accountsFinansesLastId;
 
         public DataStorage() {
 
             _transactionCategories = new Dictionary<int, TransactionCategoryModel>();
             _accountsFinanses = new Dictionary<int, AccountsFinanseModel>();
             _expenseFinanses = new Dictionary<int, ExpenseFinanseModel>();
+
+            _transactionCategoryLastId = 1;
+            _accountsFinansesLastId = 1;
         }
 
 
@@ -51,13 +53,14 @@ namespace MyFinances.Logic {
         }
 
         //AccountFinanse
-        public void AddAccountFinanse(AccountsFinanseModel account) {
+        public void AddAccount(AccountsFinanseModel account) {
+
             account.Id = _accountsFinansesLastId;
 
-            _accountsFinanses.Add(_accountsFinansesLastId, account);
+            _accountsFinanses.Add(account.Id, account);
             _accountsFinansesLastId++;
-        }
-}
 
-    
+        }
+
+    }
 }
