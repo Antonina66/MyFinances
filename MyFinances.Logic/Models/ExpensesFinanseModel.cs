@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MyFinances.Logic.Models {
-    internal class ExpenseFinanseModel {
+    public class ExpensesFinanseModel {
 
         public int Id { get; set; }
 
